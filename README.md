@@ -2,7 +2,14 @@
 
 A dark Neovim colorscheme with a semantic color system and comprehensive plugin support. Three styles included: **night**, **night transparent**, and **day**.
 
-![forestfloor.nvim example](example.png)
+### Night
+![night](images/night.png)
+
+### Night Transparent
+![night_transparent](images/night_transparent.png)
+
+### Day
+![day](images/day.png)
 
 ## Styles
 
