@@ -1,6 +1,6 @@
 local M = {}
 
-M.styles_list = { 'darker' }
+M.styles_list = { 'night', 'night_transparent', 'day' }
 
 ---Change forestfloor option (vim.g.forestfloor_config.option)
 ---It can't be changed directly by modifying that field due to a Neovim lua bug with global variables (forestfloor_config is a global variable)
@@ -28,17 +28,17 @@ function M.toggle()
     if index > #vim.g.forestfloor_config.toggle_style_list then index = 1 end
     M.set_options('style', vim.g.forestfloor_config.toggle_style_list[index])
     M.set_options('toggle_style_index', index)
-    if vim.g.forestfloor_config.style == 'light' then
-        vim.o.background = 'light'
-    else
-        vim.o.background = 'dark'
-    end
+    -- Auto-set transparent based on style
+    local style = vim.g.forestfloor_config.style
+    M.set_options('transparent', style == 'night_transparent')
+    vim.o.background = 'dark'
     vim.api.nvim_command('colorscheme forestfloor')
+    vim.defer_fn(function() print('forestfloor: ' .. style) end, 50)
 end
 
 local default_config = {
     -- Main options --
-    style = 'darker',
+    style = 'night',
     toggle_style_key = nil,
     toggle_style_list = M.styles_list,
     transparent = false,     -- don't set background

@@ -1,6 +1,16 @@
 # Forestfloor.nvim
 
-A focused, single-variant Neovim colorscheme forked from [onedark.nvim](https://github.com/navarasu/onedark.nvim) with a semantic color system and comprehensive plugin support.
+A dark Neovim colorscheme with a semantic color system and comprehensive plugin support. Three styles included: **night**, **night transparent**, and **day**.
+
+## Styles
+
+| Style | Description |
+|-------|-------------|
+| `night` | Default dark theme — deep black background (`#0F0F0F`) |
+| `night_transparent` | Same colors as night with transparent backgrounds for terminal/wallpaper setups |
+| `day` | Slightly lighter dark background (`#1A1A1A`) for daytime use |
+
+Toggle between styles with `toggle_style_key`, or call `require('forestfloor').toggle()` directly.
 
 ## Installation
 
@@ -12,7 +22,7 @@ A focused, single-variant Neovim colorscheme forked from [onedark.nvim](https://
   priority = 1000,
   config = function()
     require('forestfloor').setup({
-      style = 'darker',
+      style = 'night',
       term_colors = true,
     })
     require('forestfloor').load()
@@ -27,7 +37,7 @@ use {
   'jynfairchild/forestfloor.nvim',
   config = function()
     require('forestfloor').setup({
-      style = 'darker',
+      style = 'night',
       term_colors = true,
       lualine = { transparent = false },
     })
@@ -49,12 +59,58 @@ vim.cmd("colorscheme forestfloor")
 require('lualine').setup({ options = { theme = 'forestfloor' } })
 ```
 
+## Switching Styles
+
+### Toggle keybind (built-in)
+
+Set `toggle_style_key` in setup to cycle through styles with a single keypress:
+
+```lua
+require('forestfloor').setup({
+  style = 'night',
+  toggle_style_key = '<leader>cs',  -- pick any keybind you like
+  toggle_style_list = { 'night', 'night_transparent', 'day' },
+})
+```
+
+### Manual keybind
+
+Or set up your own keymap:
+
+```lua
+vim.keymap.set('n', '<leader>cs', function()
+  require('forestfloor').toggle()
+end, { desc = 'Cycle forestfloor style' })
+```
+
+### Set a specific style
+
+```lua
+vim.keymap.set('n', '<leader>c1', function()
+  require('forestfloor').set_options('style', 'night')
+  vim.cmd('colorscheme forestfloor')
+end, { desc = 'Forestfloor night' })
+
+vim.keymap.set('n', '<leader>c2', function()
+  require('forestfloor').set_options('style', 'night_transparent')
+  require('forestfloor').set_options('transparent', true)
+  vim.cmd('colorscheme forestfloor')
+end, { desc = 'Forestfloor night transparent' })
+
+vim.keymap.set('n', '<leader>c3', function()
+  require('forestfloor').set_options('style', 'day')
+  vim.cmd('colorscheme forestfloor')
+end, { desc = 'Forestfloor day' })
+```
+
 ## Configuration
 
 ```lua
 require('forestfloor').setup({
-  style = 'darker',              -- single consolidated style
-  transparent = false,            -- don't set background
+  style = 'night',                -- 'night', 'night_transparent', or 'day'
+  toggle_style_key = nil,          -- keybind to cycle styles (nil to disable)
+  toggle_style_list = { 'night', 'night_transparent', 'day' },
+  transparent = false,            -- set automatically when using night_transparent
   term_colors = true,             -- apply terminal ANSI colors
   ending_tildes = false,          -- show end-of-buffer tildes
   cmp_itemkind_reverse = false,   -- reverse completion item highlights
@@ -108,7 +164,7 @@ forestfloor.nvim/
 │
 ├── lua/forestfloor/
 │   ├── init.lua                       # Main API — setup() and load()
-│   ├── palette.lua                    # Color definitions (~150 semantic keys)
+│   ├── palette.lua                    # Color definitions (night + day palettes)
 │   ├── colors.lua                     # Color selection + user override merging
 │   ├── highlights.lua                 # All highlight groups (~1000 lines)
 │   ├── terminal.lua                   # Terminal ANSI color setup
@@ -130,7 +186,7 @@ forestfloor.nvim/
 
 1. **Palette** (`palette.lua`) — Raw hex color definitions using semantic names (`keyword`, `func`, `string`) instead of just color names (`red`, `blue`, `green`). This makes changing a color across all its usages a single-line edit.
 
-2. **Colors** (`colors.lua`) — Merges the palette with any user overrides from `setup()`.
+2. **Colors** (`colors.lua`) — Selects the palette based on the active style and merges any user overrides from `setup()`. The `night_transparent` style uses the `night` palette with the `transparent` flag enabled.
 
 3. **Highlights** (`highlights.lua`) — Maps colors to Neovim highlight groups. Organized into sections:
    - `hl.common` — Core UI (Normal, Cursor, StatusLine, etc.)
@@ -231,6 +287,9 @@ To disable: `require('forestfloor').setup({ term_colors = false })`
 
 ## Notes
 
-- This fork consolidates onedark's multiple styles into a single curated "darker" palette.
 - Semantic color keys make surgical color changes safer — changing `keyword` in the palette updates all keyword-related highlights at once.
 - Many plugin integrations are customized to match a specific visual reference used during development.
+
+## Attribution
+
+Forked from [onedark.nvim](https://github.com/navarasu/onedark.nvim) by navarasu.
