@@ -90,7 +90,7 @@ hl.common = {
     -- Tab backgrounds, this defaults to StatusLine if set to transparent
     TabLine = {fg = c.text_tertiary, bg = cfg.transparent and c.none or c.toolbar_background},
     TabLineFill = {fg = c.none, bg = cfg.transparent and c.none or c.toolbar_background},
-    TabLineSel =  {fg = c.barbar_active_fg, bg = c.barbar_active_bg},
+    TabLineSel =  {fg = c.barbar_active_fg, bg = cfg.transparent and c.none or c.bg0},
     -- line separator and cursor background
     WinSeparator = { fg = c.line_separator },
     Visual = { fg = c.none, bg = c.grey_3 },
@@ -406,21 +406,30 @@ hl.plugins.ale = {
 }
 
 hl.plugins.barbar = {
-    BufferCurrent = { fg = c.barbar_active_fg, bg = c.barbar_active_bg, fmt = "bold" },
-    BufferCurrentMod = { fg = c.barbar_modified, bg = c.barbar_active_bg, fmt = "bold,italic" },
-    BufferCurrentSign = { fg = c.text_tertiary, bg = c.barbar_active_bg },
-    BufferCurrentIndex = { fg = c.barbar_active_fg, bg = c.barbar_active_bg },
-    BufferCurrentTarget = { fg = c.barbar_modified, bg = c.barbar_active_bg, fmt = "bold" },
+    BufferCurrent = { fg = c.barbar_active_fg, bg = c.bg0, fmt = "bold" },
+    BufferCurrentMod = { fg = c.barbar_modified, bg = c.bg0, fmt = "bold,italic" },
+    BufferCurrentSign = { fg = c.text_tertiary, bg = c.bg0 },
+    BufferCurrentIndex = { fg = c.barbar_active_fg, bg = c.bg0 },
+    BufferCurrentTarget = { fg = c.barbar_modified, bg = c.bg0, fmt = "bold" },
+    BufferCurrentADDED = { fg = c.green, bg = c.bg0 },
+    BufferCurrentCHANGED = { fg = c.yellow, bg = c.bg0 },
+    BufferCurrentDELETED = { fg = c.red, bg = c.bg0 },
     BufferInactive = { fg = c.barbar_fg, bg = cfg.transparent and c.none or c.barbar_bg },
     BufferInactiveMod = { fg = c.barbar_modified, bg = cfg.transparent and c.none or c.barbar_bg, fmt = "italic" },
     BufferInactiveSign = { fg = c.line_separator, bg = cfg.transparent and c.none or c.barbar_bg },
     BufferInactiveIndex = { fg = c.barbar_fg, bg = cfg.transparent and c.none or c.barbar_bg },
     BufferInactiveTarget = { fg = c.barbar_modified, bg = cfg.transparent and c.none or c.barbar_bg },
+    BufferInactiveADDED = { fg = c.green, bg = cfg.transparent and c.none or c.barbar_bg },
+    BufferInactiveCHANGED = { fg = c.yellow, bg = cfg.transparent and c.none or c.barbar_bg },
+    BufferInactiveDELETED = { fg = c.red, bg = cfg.transparent and c.none or c.barbar_bg },
     BufferVisible = { fg = c.barbar_fg, bg = cfg.transparent and c.none or c.barbar_visible_bg },
     BufferVisibleMod = { fg = c.barbar_modified, bg = c.barbar_visible_bg, fmt = "italic" },
     BufferVisibleIndex = { fg = c.barbar_fg, bg = c.barbar_visible_bg },
     BufferVisibleSign = { fg = c.line_separator, bg = c.barbar_visible_bg },
     BufferVisibleTarget = { fg = c.barbar_modified, bg = c.barbar_visible_bg },
+    BufferVisibleADDED = { fg = c.green, bg = cfg.transparent and c.none or c.barbar_visible_bg },
+    BufferVisibleCHANGED = { fg = c.yellow, bg = cfg.transparent and c.none or c.barbar_visible_bg },
+    BufferVisibleDELETED = { fg = c.red, bg = cfg.transparent and c.none or c.barbar_visible_bg },
     BufferTabpageFill = { bg = cfg.transparent and c.none or c.barbar_bg },
 }
 
@@ -497,13 +506,13 @@ hl.plugins.diffview = {
 }
 
 hl.plugins.gitsigns = {
-    GitSignsAdd = { fg = c.grey_4 },
+    GitSignsAdd = { fg = c.green },
     GitSignsAddLn = { fg = c.grey_4 },
     GitSignsAddNr = { fg = c.grey_4 },
-    GitSignsChange = { fg = c.grey_4 },
+    GitSignsChange = { fg = c.yellow },
     GitSignsChangeLn = { fg = c.grey_4 },
     GitSignsChangeNr = { fg = c.grey_4 },
-    GitSignsDelete = { fg = c.grey_4 },
+    GitSignsDelete = { fg = c.red },
     GitSignsDeleteLn = { fg = c.grey_4 },
     GitSignsDeleteNr = { fg = c.grey_4 },
 }
