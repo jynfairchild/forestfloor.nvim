@@ -19,6 +19,7 @@ return {
 		-- Backgrounds & surfaces
 		------------------------------------------------------------
 		bg0 = "#0F0F0F",
+		bg_context = "#131413",
 		bg1 = "#282c34",
 		bg2 = "#30363f",
 		bg_blue = "#61afef",
@@ -47,7 +48,7 @@ return {
 		------------------------------------------------------------
 		-- Core syntax
 		------------------------------------------------------------
-		comment = "#666666",                 -- medium grey
+		comment = "#3F3F3F",                 -- medium grey
 		keyword = "#568B74",                 -- desaturated teal green (= cyan)
 		keyword_func = "#DE6767",            -- salmon red
 		keyword_import = "#DE6767",          -- salmon red (= keyword_func)
@@ -56,8 +57,8 @@ return {
 		string_regex = "#CCCCCC",            -- light grey
 		string_escape = "#DE6767",           -- salmon red (= keyword_func)
 		string_special_symbol = "#D66262",   -- coral red
-		number = "#E8C262",                  -- golden yellow
-		number_float = "#E8C262",            -- golden yellow (= number)
+		number = "#D5B15A",                  -- golden yellow
+		number_float = "#D5B15A",            -- golden yellow (= number)
 		boolean = "#DE6767",                 -- salmon red (= keyword_func)
 		type = "#568B74",                    -- teal (= cyan)
 		type_builtin = "#B8A965",            -- olive gold
@@ -199,6 +200,7 @@ return {
 		-- Backgrounds & surfaces
 		------------------------------------------------------------
 		bg0 = "#141414",
+		bg_context = "#131413",
 		bg1 = "#2E3340",
 		bg2 = "#363C48",
 		bg_blue = "#61afef",
@@ -227,7 +229,7 @@ return {
 		------------------------------------------------------------
 		-- Core syntax
 		------------------------------------------------------------
-		comment = "#707070",                 -- slightly brighter comments
+		comment = "#3F3F3F",                 -- slightly brighter comments
 		keyword = "#568B74",                 -- desaturated teal green (= cyan)
 		keyword_func = "#DE6767",            -- salmon red
 		keyword_import = "#DE6767",          -- salmon red (= keyword_func)
@@ -236,8 +238,8 @@ return {
 		string_regex = "#CCCCCC",            -- light grey
 		string_escape = "#DE6767",           -- salmon red (= keyword_func)
 		string_special_symbol = "#D66262",   -- coral red
-		number = "#E8C262",                  -- golden yellow
-		number_float = "#E8C262",            -- golden yellow (= number)
+		number = "#D5B15A",                  -- golden yellow
+		number_float = "#D5B15A",            -- golden yellow (= number)
 		boolean = "#DE6767",                 -- salmon red (= keyword_func)
 		type = "#568B74",                    -- teal (= cyan)
 		type_builtin = "#B8A965",            -- olive gold

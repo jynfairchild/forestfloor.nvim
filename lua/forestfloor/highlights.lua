@@ -457,6 +457,11 @@ hl.plugins.coc = {
     CocWarningSign = hl.plugins.lsp.DiagnosticWarn,
 }
 
+hl.plugins.treesitter_context = {
+    TreesitterContext = { bg = c.bg_context },
+    TreesitterContextLineNumber = { fg = c.line_numbers, bg = c.bg_context },
+}
+
 hl.plugins.whichkey = {
     WhichKey = { fg = c.whichkey_letter },
     WhichKeyDesc = { fg = c.whichkey_description },
